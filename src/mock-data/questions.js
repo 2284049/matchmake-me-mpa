@@ -42,7 +42,7 @@ const questions = [
         text: "Never married",
       },
       {
-        id: "currently-separated",
+        id: "adbfe02b-38f8-4196-bd9e-35d03c3e751a",
         text: "Currently separated",
       },
       {
@@ -157,19 +157,27 @@ const questions = [
     answers: [
       {
         id: "7698f367-8aa0-4c62-9970-0115f359111e",
-        text: "Not at all important",
+        text: "Racial injustice",
       },
       {
         id: "7b7ca131-4d07-452d-a174-559259cd4b9d",
-        text: "Not really important",
+        text: "Health care",
       },
       {
         id: "ab27e852-60e1-4ac7-9b62-b4e5b432ae75",
-        text: "Somewhat important",
+        text: "Illegal immigration",
       },
       {
         id: "5073c312-508b-4af2-94f9-3462b70d7052",
-        text: "Extremely important",
+        text: "Climate change",
+      },
+      {
+        id: "3408bb6f-6c9e-4e2e-8ef9-d5943ff7d459",
+        text: "National security",
+      },
+      {
+        id: "b796896a-6f84-4dba-9d04-e8ecf0f3b122",
+        text: "Gun rights",
       },
     ],
   },

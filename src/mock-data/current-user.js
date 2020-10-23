@@ -1,17 +1,20 @@
-// QUESTIONS: WHAT IF THERE ISN'T AN EXTENSION IN THE PHONE NUMBER
-// TO DO: Picture urls
+// QUESTION 1: WHAT IF THERE ISN'T AN EXTENSION IN THE PHONE NUMBER
+// QUESTION 2: How to surge - 205A video or 300B video?
+// QUESTION 3: Pictures - original urls or our surge urls?
+
+// TO DO: Surge, Picture urls, subtitles
 
 // the data for the current user
 const currentUser = {
   id: "de1056a3-25d4-4a88-954d-6eecf5be2697",
-  firstName: "Sarah",
+  firstName: "Megan",
   lastName: "Gellar",
-  email: "sarah@gmail.com",
+  email: "megan@gmail.com",
   phone: {
     countryCode: 1, // can be up to 7 digits
     areaCode: 702, // can be up to 7 digits
-    lineNumber: 543 - 7878, // can be up to 15 digits
-    extension: Number, // can be up to 20 digits
+    lineNumber: 5437878, // can be up to 15 digits
+    extension: null, // can be up to 20 digits
   },
   password: "b3d4f347d71bc0d2a6af2cfc5fd81bb8",
   createdAt: 1603135264000,
@@ -32,7 +35,7 @@ const currentUser = {
           text: "Male",
         },
       ],
-      selectedAnswerIds: [String], // an array of UUIDs indicating all selected answers. can be one or none, too.
+      selectedAnswerIds: ["d99130ed-8ed7-4927-980a-d6e8e3f4745b"], // an array of UUIDs indicating all selected answers. can be one or none, too.
     },
     {
       id: "2751a7dd-9c9a-4a26-88af-677df8bba6a5",
@@ -49,7 +52,7 @@ const currentUser = {
           text: "Male",
         },
       ],
-      selectedAnswerIds: [String], // an array of UUIDs indicating all selected answers. can be one or none, too.
+      selectedAnswerIds: ["4b5ffbab-70e2-4ff7-9040-64d4fbe31ceb"], // an array of UUIDs indicating all selected answers. can be one or none, too.
     },
     {
       id: "c01267de-4473-4454-adad-bd978e971595",
@@ -62,7 +65,7 @@ const currentUser = {
           text: "Never married",
         },
         {
-          id: "currently-separated",
+          id: "adbfe02b-38f8-4196-bd9e-35d03c3e751a",
           text: "Currently separated",
         },
         {
@@ -74,7 +77,7 @@ const currentUser = {
           text: "Widowed",
         },
       ],
-      selectedAnswerIds: [String], // an array of UUIDs indicating all selected answers. can be one or none, too.
+      selectedAnswerIds: ["6b9cab6d-ef37-4e93-a489-54e52393b8f0"], // an array of UUIDs indicating all selected answers. can be one or none, too.
     },
     {
       id: "a2dfe856-c8bc-44c8-be7b-a38e2c3329d9",
@@ -95,12 +98,12 @@ const currentUser = {
           text: "Maybe",
         },
       ],
-      selectedAnswerIds: [String], // an array of UUIDs indicating all selected answers. can be one or none, too.
+      selectedAnswerIds: ["0592557f-d0c1-4013-a1a8-4c888a73a477"], // an array of UUIDs indicating all selected answers. can be one or none, too.
     },
     {
       id: "3c8da21c-e09a-4085-8b49-db0cebb7bf7a",
       title: "How important is exercise or working out to you?",
-      type: 1,
+      type: 3,
       limit: 1,
       answers: [
         {
@@ -120,13 +123,13 @@ const currentUser = {
           text: "Extremely important",
         },
       ],
-      selectedAnswerIds: [String], // an array of UUIDs indicating all selected answers. can be one or none, too.
+      selectedAnswerIds: ["d86f9fd5-3208-40fa-81c3-f541a426f52a"], // an array of UUIDs indicating all selected answers. can be one or none, too.
     },
     {
       id: "e10023c2-472e-4003-a8c4-0e5fe2d0cf42",
       title:
         "How important is it for you to climb the ladder at your job and get promotions?",
-      type: 1,
+      type: 3,
       limit: 1,
       answers: [
         {
@@ -146,12 +149,12 @@ const currentUser = {
           text: "Extremely important",
         },
       ],
-      selectedAnswerIds: [String], // an array of UUIDs indicating all selected answers. can be one or none, too.
+      selectedAnswerIds: ["a63de221-941f-4b43-a4a9-07a80f076176"], // an array of UUIDs indicating all selected answers. can be one or none, too.
     },
     {
       id: "0949f8f5-f84f-4df9-91ff-7260630c6eb9",
       title: "How important are your spiritual/religious beliefs to you?",
-      type: 1,
+      type: 3,
       limit: 1,
       answers: [
         {
@@ -171,7 +174,7 @@ const currentUser = {
           text: "Extremely important",
         },
       ],
-      selectedAnswerIds: [String], // an array of UUIDs indicating all selected answers. can be one or none, too.
+      selectedAnswerIds: ["f44a0f87-ba5e-4b2b-9478-280c808b29ea"], // an array of UUIDs indicating all selected answers. can be one or none, too.
     },
     {
       id: "fc386d71-8ef0-4661-894b-c193b3b5da44",
@@ -182,22 +185,33 @@ const currentUser = {
       answers: [
         {
           id: "7698f367-8aa0-4c62-9970-0115f359111e",
-          text: "Not at all important",
+          text: "Racial injustice",
         },
         {
           id: "7b7ca131-4d07-452d-a174-559259cd4b9d",
-          text: "Not really important",
+          text: "Health care",
         },
         {
           id: "ab27e852-60e1-4ac7-9b62-b4e5b432ae75",
-          text: "Somewhat important",
+          text: "Illegal immigration",
         },
         {
           id: "5073c312-508b-4af2-94f9-3462b70d7052",
-          text: "Extremely important",
+          text: "Climate change",
+        },
+        {
+          id: "3408bb6f-6c9e-4e2e-8ef9-d5943ff7d459",
+          text: "National security",
+        },
+        {
+          id: "b796896a-6f84-4dba-9d04-e8ecf0f3b122",
+          text: "Gun rights",
         },
       ],
-      selectedAnswerIds: [String], // an array of UUIDs indicating all selected answers. can be one or none, too.
+      selectedAnswerIds: [
+        "7698f367-8aa0-4c62-9970-0115f359111e",
+        "7b7ca131-4d07-452d-a174-559259cd4b9d",
+      ], // an array of UUIDs indicating all selected answers. can be one or none, too.
     },
     {
       id: "d479c412-0db9-42af-9702-308d5c016107",
@@ -242,7 +256,9 @@ const currentUser = {
           text: "Other",
         },
       ],
-      selectedAnswerIds: [String], // an array of UUIDs indicating all selected answers. can be one or none, too.
+      selectedAnswerIds: ["4db711e1-0db8-4aad-9ce4-b5a06bec532e"], // an array of UUIDs indicating all selected answers. can be one or none, too.
     },
   ],
 };
+
+export default currentUser;

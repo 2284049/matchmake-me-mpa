@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Landing from "./components/pages/Landing";
 import SignIn from "./components/pages/SignIn";
 import Questionnaire from "./components/pages/Questionnaire";
-import Matches from "./components/pages/Matches";
-import Match from "./components/pages/Match";
+import Matches from "./components/pages/MatchesPage";
+import Match from "./components/pages/MatchPage";
 import NotFound from "./components/pages/NotFound";
 
 function App() {

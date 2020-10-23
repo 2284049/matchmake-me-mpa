@@ -3,7 +3,13 @@ import { Link } from "react-router-dom";
 import purpleAppLogo from "../../icons/purplelogo.png";
 import leftChevron from "../../icons/chevron-left.svg";
 import heartIcon from "../../icons/heart.svg";
-import guyThree from "../../img/guy3.jpg";
+import matchesdata from "../../mock-data/matchesdata";
+const topMatch = matchesdata[1];
+// // console.log(`Here is the top match data: `, topMatch);
+// const topMatchQuestions = topMatch.questions;
+// console.log(`Here are the top match questions: `, topMatchQuestions);
+// const selectedAnswers = topMatchQuestions.selectedAnswerIds;
+// // console.log(selectedAnswers);
 
 export default function Match() {
   return (
@@ -37,7 +43,7 @@ export default function Match() {
           <div className="row">
             <div className="col-12 col-sm-7 mb-2 mb-sm-6">
               <img
-                src={guyThree}
+                src={topMatch.verifyPhotoUrl}
                 width="100%"
                 height="auto"
                 style={{ borderRadius: "0.75rem" }}
@@ -45,8 +51,8 @@ export default function Match() {
               />
             </div>
             <div className="col-12 col-sm-5 d-inline">
-              <p className="p-large mb-2">ID: flying_cedar</p>
-              <p className="p-large mt-n2 mb-6">Age: 29</p>
+              <p className="p-large mb-2">ID: {topMatch.username}</p>
+              <p className="p-large mt-n2 mb-6">Age: ADD AGE DATA</p>
             </div>
           </div>
           <div className="row mb-2">
@@ -59,7 +65,7 @@ export default function Match() {
           </div>
           <div className="row mb-2">
             <div className="col-12">
-              <p className="d-inline">Relationship status:</p>
+              <p className="d-inline">{topMatch.questions[0].title}</p>
               <p className="text-muted d-inline ml-2">Never married</p>
             </div>
           </div>
@@ -262,7 +268,7 @@ export default function Match() {
             />
             <label
               className="custom-control-label text-muted"
-              for="show-not-interested"
+              htmlFor="show-not-interested"
             >
               I'm not interested.
             </label>
