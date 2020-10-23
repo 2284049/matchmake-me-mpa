@@ -2,6 +2,8 @@ const matches = [
   {
     id: "67b6d770-b0bf-45f7-8e82-5461eda8df7b",
     username: "walking_evergreen",
+    birthdate: "03241984",
+    age: "36",
     score: 62,
     createdAt: 1603342688819,
     verifyPhotoUrl:
@@ -264,6 +266,8 @@ const matches = [
   {
     id: "87b6d770-b0bf-45f7-8e82-5461eda8df7b",
     username: "running_maple",
+    birthdate: "02151987",
+    age: "33",
     score: 89,
     createdAt: 1603342688819,
     verifyPhotoUrl:
@@ -512,6 +516,8 @@ const matches = [
   {
     id: "77b6d770-b0bf-45f7-8e82-5461eda8df7b",
     username: "jumping_fir",
+    birthdate: "11041989",
+    age: "30",
     score: 37,
     createdAt: 1603342688819,
     verifyPhotoUrl:
@@ -760,6 +766,8 @@ const matches = [
   {
     id: "97b6d770-b0bf-45f7-8e82-5461eda8df7b",
     username: "flying_cedar",
+    birthdate: "06131992",
+    age: "28",
     score: 74,
     createdAt: 1603342688819,
     verifyPhotoUrl:

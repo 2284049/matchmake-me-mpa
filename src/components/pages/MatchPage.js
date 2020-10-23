@@ -52,7 +52,7 @@ export default function Match() {
             </div>
             <div className="col-12 col-sm-5 d-inline">
               <p className="p-large mb-2">ID: {topMatch.username}</p>
-              <p className="p-large mt-n2 mb-6">Age: ADD AGE DATA</p>
+              <p className="p-large mt-n2 mb-6">{topMatch.age}</p>
             </div>
           </div>
           <div className="row mb-2">

@@ -41,6 +41,7 @@ export default function Questionnaire() {
           </form>
 
           {currentUser.questions.map((question) => {
+            console.log(question);
             if (question.type === 1) {
               return (
                 <RadioQuestion
