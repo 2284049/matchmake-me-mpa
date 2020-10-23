@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import purpleLogo from "../../icons/purplelogo.png";
 import photoPose from "../../img/photogesture.jpg";
 import currentUser from "../../mock-data/current-user";
+import RadioQuestion from "../ui/RadioQuestion";
+import CheckboxQuestion from "../ui/RadioQuestion";
+import LikertQuestion from "../ui/RadioQuestion";
+
 console.log(currentUser);
 
 export default function Questionnaire() {
@@ -39,98 +43,27 @@ export default function Questionnaire() {
           {currentUser.questions.map((question) => {
             if (question.type === 1) {
               return (
-                <div className="row mb-7">
-                  <div className="col-12 mb-1">
-                    <p>{question.title}</p>
-                  </div>
-                  {question.answers.map((answer) => {
-                    return (
-                      <div className="col-12 col-sm-4 col-md-3 col-lg-2 col-xl-3">
-                        <div className="custom-control custom-radio d-inline">
-                          <input
-                            type="radio"
-                            id={answer.id}
-                            name={question.id}
-                            className="custom-control-input"
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor={answer.id}
-                          >
-                            {answer.text}
-                          </label>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                <RadioQuestion
+                  questionTitle={question.title}
+                  key={question.id}
+                  answers={question.answers}
+                />
               );
             } else if (question.type === 2) {
               return (
-                <div className="row mb-7">
-                  <div className="col-12 mb-1">
-                    <p>{question.title}</p>
-                  </div>
-                  {question.answers.map((answer) => {
-                    return (
-                      <div className="col-xs-12 col-sm-6">
-                        <div className="custom-control custom-checkbox">
-                          <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            id={answer.id}
-                          />
-
-                          <label
-                            className="custom-control-label"
-                            htmlFor={answer.id}
-                          >
-                            {answer.text}
-                          </label>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                <CheckboxQuestion
+                  questionTitle={question.title}
+                  key={question.id}
+                  answers={question.answers}
+                />
               );
             } else if (question.type === 3) {
               return (
-                <div className="row">
-                  <div className="col-12 mb-1">
-                    <p>{question.title}</p>
-                  </div>
-                  {question.answers.map((answer) => {
-                    return (
-                      <div className="col-3">
-                        <div className="custom-control custom-radio d-flex justify-content-center">
-                          <input
-                            type="radio"
-                            id={answer.id}
-                            name={question.id}
-                            value="1"
-                            className="custom-control-input"
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor={answer.id}
-                          ></label>
-                        </div>
-                      </div>
-                    );
-                  })}
-                  {question.answers.map((answer) => {
-                    return (
-                      <div className="col-3 d-flex justify-content-center mb-7">
-                        <label
-                          htmlFor={answer.id}
-                          className="text-center small-input-font"
-                        >
-                          {answer.text}
-                        </label>
-                      </div>
-                    );
-                  })}
-                </div>
+                <LikertQuestion
+                  questionTitle={question.title}
+                  key={question.id}
+                  answers={question.answers}
+                />
               );
             }
             return <></>;
