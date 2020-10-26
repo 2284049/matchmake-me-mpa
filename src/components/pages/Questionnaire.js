@@ -4,10 +4,8 @@ import purpleLogo from "../../icons/purplelogo.png";
 import photoPose from "../../img/photogesture.jpg";
 import currentUser from "../../mock-data/current-user";
 import RadioQuestion from "../ui/RadioQuestion";
-import CheckboxQuestion from "../ui/RadioQuestion";
-import LikertQuestion from "../ui/RadioQuestion";
-
-console.log(currentUser);
+import CheckboxQuestion from "../ui/CheckboxQuestion";
+import LikertQuestion from "../ui/LikertQuestion";
 
 export default function Questionnaire() {
   return (
@@ -41,7 +39,6 @@ export default function Questionnaire() {
           </form>
 
           {currentUser.questions.map((question) => {
-            console.log(question);
             if (question.type === 1) {
               return (
                 <RadioQuestion

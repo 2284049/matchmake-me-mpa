@@ -9,9 +9,9 @@ export default function LikertQuestion(props) {
       {props.answers.map((answer) => {
         return (
           <div className="row">
-            <div className="col-3" key={answer.id}>
+            <div className="col-3">
               <div className="row">
-                <div className="col-12">
+                <div className="col-12" key={answer.id}>
                   <div className="custom-control custom-radio d-flex justify-content-center">
                     <input
                       type="radio"
@@ -25,11 +25,11 @@ export default function LikertQuestion(props) {
                 </div>
                 <div
                   className="col-12 d-flex justify-content-center mb-7"
-                  key={answer.id + "label"}
+                  // key={answer.id + "label"}
                 >
                   <label
                     htmlFor={answer.id}
-                    className="text-center small-input-font text-danger"
+                    className="text-center small-input-font"
                   >
                     {answer.text}
                   </label>
