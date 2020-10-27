@@ -4,13 +4,20 @@ export default function RadioQuestion(props) {
    function checkIsSelected(selectedAnswerIds, answerId) {
       return selectedAnswerIds.includes(answerId);
    }
+
+   //  const title = props.question.title;
+   //  const answers = props.question.answers;
+   //  const id = props.question.id;
+   //  const selectedAnswerIds = props.question.selectedAnswerIds;
+   const { title, answers, id, selectedAnswerIds } = props.question;
+
    return (
       <>
          <div className="row mb-7">
             <div className="col-12 mb-1">
-               <p>{props.questionTitle}</p>
+               <p>{title}</p>
             </div>
-            {props.answers.map((answer) => {
+            {answers.map((answer) => {
                return (
                   <div
                      className="col-12 col-sm-4 col-md-3 col-lg-2 col-xl-3"
@@ -20,12 +27,15 @@ export default function RadioQuestion(props) {
                         <input
                            type="radio"
                            id={answer.id}
-                           name={props.questionId}
+                           name={id}
                            className="custom-control-input"
                            checked={checkIsSelected(
-                              props.selectedAnswerIds,
+                              selectedAnswerIds,
                               answer.id
                            )}
+                           onChange={(e) => {
+                              props.setCurrentUserData(e);
+                           }}
                         />
                         <label
                            className="custom-control-label"

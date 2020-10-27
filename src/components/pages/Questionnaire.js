@@ -6,6 +6,7 @@ import currentUser from "../../mock-data/current-user";
 import RadioQuestion from "../ui/RadioQuestion";
 import CheckboxQuestion from "../ui/CheckboxQuestion";
 import LikertQuestion from "../ui/LikertQuestion";
+import cloneDeep from "lodash/cloneDeep";
 
 export default class Questionnaire extends React.Component {
    constructor(props) {
@@ -13,13 +14,50 @@ export default class Questionnaire extends React.Component {
       this.state = {
          currentUserData: currentUser,
       };
+      this.setCurrentUserData = this.setCurrentUserData.bind(this);
+      // we have to bind the parent this.setCurrentUserDate with the child this.setCurrentUserData
    }
 
-   //  setCurrentUserData() {
-   //   this.setState({
-   //     currentUserData: //change based on their selections
-   //   });
-   //  }
+   setCurrentUserData(e) {
+      console.log(
+         "You've made changes to the parent component. Here is the event: ",
+         e
+      );
+      console.log("Here is the value: ", e.target.value);
+      const questionId = e.target.name; // the id of the question
+      const updatedAnswerId = e.target.id; // the current selected answer id
+      const copyOfCurrentUserData = cloneDeep(this.state.currentUserData); // lodash cloneDeep to make a DEEP COPY
+      let updatedAnswerIds = []; // creating an empty array of the updated answer ids, which will replace the selected answer ids array
+      const question = copyOfCurrentUserData.questions.find((question) => {
+         return question.id === questionId; // gives us the question where the current selection is being made; in the questions array, we want to find the question that has the same id as the current selected answer
+      });
+      if (question.selectedAnswerIds.includes(updatedAnswerId)) {
+         // on the current question, if the selected answers array includes the current selected answer id (it was checked previously)
+         updatedAnswerIds = question.selectedAnswerIds.filter(
+            (selectedAnswerId) => {
+               return selectedAnswerId !== updatedAnswerId; // filter through and only include ids in updatedAnswerIDs where this is true: the updated answer id was not already in the array of selectedAnswerIds
+            }
+         ); // example: "divorced" was already a selected answer and it's id was in the selectedAnswerIds array.
+         // if "divorced" is clicked on again (it's now the updatedAnswerId), the updatedAnswerIds array will not include it anymore
+         // the updatedAnswerIds array was filtered to only include updated answer ids that weren't already in the selectedAnswerId array
+      } else {
+         updatedAnswerIds = question.selectedAnswerIds.concat(updatedAnswerId);
+         // if the updated answer id was not included in the selectedAnswerIds array, then we want to add the updated answer id to the updatedAnswerIds array
+      }
+      question.selectedAnswerIds = updatedAnswerIds; // we've now switched out the arrays
+      const questionIndex = copyOfCurrentUserData.questions.findIndex(
+         (question) => {
+            // we want to find the index of the question object for a particular id that matches the question index of our updated selected answer
+            return question.id === questionId;
+         }
+      );
+      copyOfCurrentUserData.questions[questionIndex] = question; // replace the original question object with the new updated selected answer question object
+
+      // update the state
+      this.setState({
+         currentUserData: copyOfCurrentUserData, // we are updating the currentUserData here to reflect the changes made in the copy
+      });
+   }
 
    render() {
       return (
@@ -64,28 +102,25 @@ export default class Questionnaire extends React.Component {
                      if (question.type === 1) {
                         return (
                            <RadioQuestion
-                              questionTitle={question.title}
+                              question={question}
                               key={question.id}
-                              answers={question.answers}
-                              selectedAnswerIds={question.selectedAnswerIds}
+                              setCurrentUserData={this.setCurrentUserData}
                            />
                         );
                      } else if (question.type === 2) {
                         return (
                            <CheckboxQuestion
-                              questionTitle={question.title}
+                              question={question}
                               key={question.id}
-                              answers={question.answers}
-                              selectedAnswerIds={question.selectedAnswerIds}
+                              setCurrentUserData={this.setCurrentUserData}
                            />
                         );
                      } else if (question.type === 3) {
                         return (
                            <LikertQuestion
-                              questionTitle={question.title}
+                              question={question}
                               key={question.id}
-                              answers={question.answers}
-                              selectedAnswerIds={question.selectedAnswerIds}
+                              setCurrentUserData={this.setCurrentUserData}
                            />
                         );
                      }
