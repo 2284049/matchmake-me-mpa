@@ -28,13 +28,14 @@ export default function RadioQuestion(props) {
                            type="radio"
                            id={answer.id}
                            name={id}
+                           value={answer.id}
                            className="custom-control-input"
                            checked={checkIsSelected(
                               selectedAnswerIds,
                               answer.id
                            )}
                            onChange={(e) => {
-                              props.setCurrentUserData(e);
+                              props.setCurrentUserDataRadioVersion(e);
                            }}
                         />
                         <label

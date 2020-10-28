@@ -24,11 +24,11 @@ export default function LikertQuestion(props) {
                         type="radio"
                         id={answer.id}
                         name={id}
-                        defaultValue={selectedAnswerIds}
                         className="custom-control-input"
+                        value={answer.id}
                         checked={checkIsSelected(selectedAnswerIds, answer.id)}
                         onChange={(e) => {
-                           props.setCurrentUserData(e);
+                           props.setCurrentUserDataRadioVersion(e);
                         }}
                      />
                      <label className="custom-control-label"></label>

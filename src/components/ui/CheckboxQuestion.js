@@ -26,7 +26,7 @@ export default function CheckboxQuestion(props) {
                         id={answer.id}
                         checked={checkIsSelected(selectedAnswerIds, answer.id)}
                         name={id}
-                        defaultValue={selectedAnswerIds}
+                        value={answer.id}
                         onChange={(e) => {
                            props.setCurrentUserData(e);
                         }}

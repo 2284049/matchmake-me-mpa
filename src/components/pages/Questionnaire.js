@@ -15,6 +15,7 @@ export default class Questionnaire extends React.Component {
          currentUserData: currentUser,
       };
       this.setCurrentUserData = this.setCurrentUserData.bind(this);
+      this.setCurrentUserDataRadioVersion = this.setCurrentUserDataRadioVersion.bind(this)
       // we have to bind the parent this.setCurrentUserDate with the child this.setCurrentUserData
    }
 
@@ -58,6 +59,33 @@ export default class Questionnaire extends React.Component {
          currentUserData: copyOfCurrentUserData, // we are updating the currentUserData here to reflect the changes made in the copy
       });
    }
+  
+   setCurrentUserDataRadioVersion(e) {
+      console.log(
+         "You've made changes to the parent component. Here is the event: ",
+         e
+      );
+      console.log("Here is the value: ", e.target.value);
+      const questionId = e.target.name; // the id of the question
+      const updatedAnswerId = e.target.id; // the current selected answer id
+      const copyOfCurrentUserData = cloneDeep(this.state.currentUserData); // lodash cloneDeep to make a DEEP COPY
+      const question = copyOfCurrentUserData.questions.find((question) => {
+         return question.id === questionId; // gives us the question where the current selection is being made; in the questions array, we want to find the question that has the same id as the current selected answer
+      });
+      const updatedAnswerIds = [updatedAnswerId]; // creating an empty array of the updated answer ids, which will replace the selected answer ids array
+      question.selectedAnswerIds = updatedAnswerIds; // we've now switched out the arrays
+      const questionIndex = copyOfCurrentUserData.questions.findIndex(
+         (question) => {
+            // we want to find the index of the question object for a particular id that matches the question index of our updated selected answer
+            return question.id === questionId;
+         }
+      );
+      copyOfCurrentUserData.questions[questionIndex] = question; // replace the original question object with the new updated selected answer question objectnpm s
+      this.setState({ // update the state
+         currentUserData: copyOfCurrentUserData, // we are updating the currentUserData here to reflect the changes made in the copy
+      });
+   }
+
 
    render() {
       return (
@@ -104,7 +132,7 @@ export default class Questionnaire extends React.Component {
                            <RadioQuestion
                               question={question}
                               key={question.id}
-                              setCurrentUserData={this.setCurrentUserData}
+                              setCurrentUserData={this.setCurrentUserDataRadioVersion}
                            />
                         );
                      } else if (question.type === 2) {
@@ -120,7 +148,7 @@ export default class Questionnaire extends React.Component {
                            <LikertQuestion
                               question={question}
                               key={question.id}
-                              setCurrentUserData={this.setCurrentUserData}
+                              setCurrentUserData={this.setCurrentUserDataRadioVersion}
                            />
                         );
                      }
