@@ -19,37 +19,36 @@ export default function LikertQuestion(props) {
          {answers.map((answer) => {
             return (
                <div className="col-3" key={answer.id}>
-                  <div className="custom-control custom-radio d-flex justify-content-center">
+                  <label
+                     htmlFor={answer.id}
+                     className="small-input-font text-center mb-7"
+                  >
                      <input
                         type="radio"
                         id={answer.id}
                         name={id}
-                        className="custom-control-input"
+                        className="custom-control-input likert-radio mx-auto d-block"
                         value={answer.id}
                         checked={checkIsSelected(selectedAnswerIds, answer.id)}
                         onChange={(e) => {
-                           props.setCurrentUserDataRadioVersion(e);
+                           props.setData(e);
                         }}
                      />
-                     <label className="custom-control-label"></label>
-                  </div>
+
+                     {answer.text}
+                  </label>
                </div>
             );
          })}
-         {answers.map((answer) => {
+         {/* {answers.map((answer) => {
             return (
                <div className="col-3" key={answer.id + "label"}>
                   <div className="d-flex justify-content-center mb-7">
-                     <label
-                        htmlFor={answer.id}
-                        className="text-center small-input-font"
-                     >
-                        {answer.text}
-                     </label>
+                     
                   </div>
                </div>
             );
-         })}
+         })} */}
       </div>
    );
 }

@@ -35,7 +35,7 @@ export default function RadioQuestion(props) {
                               answer.id
                            )}
                            onChange={(e) => {
-                              props.setCurrentUserDataRadioVersion(e);
+                              props.setData(e);
                            }}
                         />
                         <label

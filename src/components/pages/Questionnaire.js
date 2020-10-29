@@ -15,7 +15,9 @@ export default class Questionnaire extends React.Component {
          currentUserData: currentUser,
       };
       this.setCurrentUserData = this.setCurrentUserData.bind(this);
-      this.setCurrentUserDataRadioVersion = this.setCurrentUserDataRadioVersion.bind(this)
+      this.setCurrentUserDataRadioVersion = this.setCurrentUserDataRadioVersion.bind(
+         this
+      );
       // we have to bind the parent this.setCurrentUserDate with the child this.setCurrentUserData
    }
 
@@ -59,7 +61,7 @@ export default class Questionnaire extends React.Component {
          currentUserData: copyOfCurrentUserData, // we are updating the currentUserData here to reflect the changes made in the copy
       });
    }
-  
+
    setCurrentUserDataRadioVersion(e) {
       console.log(
          "You've made changes to the parent component. Here is the event: ",
@@ -81,11 +83,11 @@ export default class Questionnaire extends React.Component {
          }
       );
       copyOfCurrentUserData.questions[questionIndex] = question; // replace the original question object with the new updated selected answer question objectnpm s
-      this.setState({ // update the state
+      this.setState({
+         // update the state
          currentUserData: copyOfCurrentUserData, // we are updating the currentUserData here to reflect the changes made in the copy
       });
    }
-
 
    render() {
       return (
@@ -132,7 +134,7 @@ export default class Questionnaire extends React.Component {
                            <RadioQuestion
                               question={question}
                               key={question.id}
-                              setCurrentUserData={this.setCurrentUserDataRadioVersion}
+                              setData={this.setCurrentUserDataRadioVersion}
                            />
                         );
                      } else if (question.type === 2) {
@@ -140,7 +142,7 @@ export default class Questionnaire extends React.Component {
                            <CheckboxQuestion
                               question={question}
                               key={question.id}
-                              setCurrentUserData={this.setCurrentUserData}
+                              setData={this.setCurrentUserData}
                            />
                         );
                      } else if (question.type === 3) {
@@ -148,7 +150,7 @@ export default class Questionnaire extends React.Component {
                            <LikertQuestion
                               question={question}
                               key={question.id}
-                              setCurrentUserData={this.setCurrentUserDataRadioVersion}
+                              setData={this.setCurrentUserDataRadioVersion}
                            />
                         );
                      }

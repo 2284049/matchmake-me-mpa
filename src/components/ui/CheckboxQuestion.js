@@ -28,7 +28,7 @@ export default function CheckboxQuestion(props) {
                         name={id}
                         value={answer.id}
                         onChange={(e) => {
-                           props.setCurrentUserData(e);
+                           props.setData(e);
                         }}
                      />
 
