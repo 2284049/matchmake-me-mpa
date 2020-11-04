@@ -3,8 +3,9 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import combineReducers from "./combineReducers";
 
 const initialState = {
-   user: [],
+   currentUser: {},
    matches: [],
+   selectedMatch: {},
 };
 
 const store = createStore(combineReducers, initialState, composeWithDevTools());
