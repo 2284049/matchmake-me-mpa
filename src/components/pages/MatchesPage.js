@@ -4,7 +4,6 @@ import purpleLogo from "../../icons/purplelogo.png";
 import pencilIcon from "../../icons/pencil.svg";
 import logoutIcon from "../../icons/account-logout.svg";
 import MatchPreview from "../ui/MatchPreview";
-// import matchesData from "../../mock-data/matchesdata";
 import axios from "axios";
 import { connect } from "react-redux";
 import actions from "../../store/actions";
@@ -92,11 +91,10 @@ class Matches extends React.Component {
                      </div>
                   </div>
                   <div className="row">
-                     {matchesData.map((individualmatch) => {
+                     {this.props.matches.map((individualmatch) => {
                         return (
                            <MatchPreview
-                              photo={individualmatch.verifyPhotoUrl}
-                              username={individualmatch.username}
+                              match={individualmatch}
                               key={individualmatch.id}
                            />
                         );
@@ -104,7 +102,6 @@ class Matches extends React.Component {
                   </div>
                </div>
             </div>
-            ;
          </div>
       );
    }

@@ -2,23 +2,31 @@ import React from "react";
 import { Link } from "react-router-dom";
 import purpleLogo from "../../icons/purplelogo.png";
 import photoPose from "../../img/photogesture.jpg";
-import currentUser from "../../mock-data/current-user";
 import RadioQuestion from "../ui/RadioQuestion";
 import CheckboxQuestion from "../ui/CheckboxQuestion";
 import LikertQuestion from "../ui/LikertQuestion";
 import cloneDeep from "lodash/cloneDeep";
+import { connect } from "react-redux";
 
-export default class Questionnaire extends React.Component {
+class Questionnaire extends React.Component {
    constructor(props) {
       super(props);
+      console.log("This is props from the constructor: ", props);
       this.state = {
-         currentUserData: currentUser,
+         currentUserData: {},
       };
       this.setCurrentUserData = this.setCurrentUserData.bind(this);
       this.setCurrentUserDataRadioVersion = this.setCurrentUserDataRadioVersion.bind(
          this
       );
       // we have to bind the parent this.setCurrentUserDate with the child this.setCurrentUserData
+   }
+
+   componentDidMount() {
+      console.log("This is the props.current user", this.props);
+      this.setState({
+         currentUserData: this.props.currentUser,
+      });
    }
 
    setCurrentUserData(e) {
@@ -128,34 +136,35 @@ export default class Questionnaire extends React.Component {
                      </div>
                   </form>
 
-                  {this.state.currentUserData.questions.map((question) => {
-                     if (question.type === 1) {
-                        return (
-                           <RadioQuestion
-                              question={question}
-                              key={question.id}
-                              setData={this.setCurrentUserDataRadioVersion}
-                           />
-                        );
-                     } else if (question.type === 2) {
-                        return (
-                           <CheckboxQuestion
-                              question={question}
-                              key={question.id}
-                              setData={this.setCurrentUserData}
-                           />
-                        );
-                     } else if (question.type === 3) {
-                        return (
-                           <LikertQuestion
-                              question={question}
-                              key={question.id}
-                              setData={this.setCurrentUserDataRadioVersion}
-                           />
-                        );
-                     }
-                     return <></>;
-                  })}
+                  {this.state.currentUserData.questions &&
+                     this.state.currentUserData.questions.map((question) => {
+                        if (question.type === 1) {
+                           return (
+                              <RadioQuestion
+                                 question={question}
+                                 key={question.id}
+                                 setData={this.setCurrentUserDataRadioVersion}
+                              />
+                           );
+                        } else if (question.type === 2) {
+                           return (
+                              <CheckboxQuestion
+                                 question={question}
+                                 key={question.id}
+                                 setData={this.setCurrentUserData}
+                              />
+                           );
+                        } else if (question.type === 3) {
+                           return (
+                              <LikertQuestion
+                                 question={question}
+                                 key={question.id}
+                                 setData={this.setCurrentUserDataRadioVersion}
+                              />
+                           );
+                        }
+                        return <></>;
+                     })}
 
                   <p className="mb-4">
                      Please upload an unedited non-filtered photo matching the
@@ -204,3 +213,12 @@ export default class Questionnaire extends React.Component {
       );
    }
 }
+
+function mapStateToProps(state) {
+   //global state
+   console.log("this is the state", state.currentUser);
+   return {
+      currentUser: { pizza: "mushroom" },
+   };
+}
+export default connect(mapStateToProps)(Questionnaire);

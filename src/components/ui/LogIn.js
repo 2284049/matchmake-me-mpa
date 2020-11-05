@@ -156,7 +156,6 @@ class LogIn extends React.Component {
                         )}
                      </div>
                      <button
-                        to="/matches"
                         className="btn btn-primary btn-lg font-sans-serif mt-5"
                         onClick={() => {
                            this.validateAndLogInUser();

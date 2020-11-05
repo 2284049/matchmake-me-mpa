@@ -177,7 +177,6 @@ class SignUp extends React.Component {
                      )}
                   </div>
                   <button
-                     to="/questionnaire"
                      className="btn btn-primary btn-lg font-sans-serif mt-5"
                      id="sign-up-button"
                      onClick={() => {
