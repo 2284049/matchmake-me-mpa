@@ -3,38 +3,51 @@ import { Link } from "react-router-dom";
 import purpleAppLogo from "../../icons/purplelogo.png";
 import leftChevron from "../../icons/chevron-left.svg";
 import heartIcon from "../../icons/heart.svg";
-import matchesdata from "../../mock-data/matchesdata";
 import RadioQuestion from "../ui/RadioQuestion";
 import CheckboxQuestion from "../ui/CheckboxQuestion";
 import LikertQuestion from "../ui/LikertQuestion";
+import { connect } from "react-redux";
 
-const currentMatch = matchesdata[1];
-
-// // console.log(`Here is the top match data: `, currentMatch);
-// const currentMatchQuestions = currentMatch.questions;
-// console.log(`Here are the top match questions: `, currentMatchQuestions);
-// const selectedAnswers = currentMatchQuestions.selectedAnswerIds;
+// // console.log(`Here is the top match data: `, selectedMatch);
+// const selectedMatchQuestions = selectedMatch.questions;
+// console.log(`Here are the top match questions: `, selectedMatchQuestions);
+// const selectedAnswers = selectedMatchQuestions.selectedAnswerIds;
 // // console.log(selectedAnswers);
 
-export default class MatchPage extends React.Component {
+class MatchPage extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         currentMatchData: currentMatch,
+         selectedMatchData: {},
       };
-      this.setCurrentMatchData = this.setCurrentMatchData.bind(this);
-      this.setCurrentMatchDataRadioVersion = this.setCurrentMatchDataRadioVersion.bind(
+      this.setSelectedMatchData = this.setSelectedMatchData.bind(this);
+      this.setSelectedMatchDataRadioVersion = this.setSelectedMatchDataRadioVersion.bind(
          this
       );
    }
 
-   setCurrentMatchData(e) {}
-   setCurrentMatchDataRadioVersion(e) {}
+   componentDidMount() {
+      this.setState({
+         selectedMatchData: this.props.selectedMatch,
+      });
+   }
+
+   // DO THIS IN CASE THE DATA DOESN'T LOAD RIGHT AWAY AND UPDATE THE STATE
+   componentDidUpdate(prevProps) {
+      if (this.props.selectedMatch !== prevProps.selectedMatch) {
+         this.setState({
+            selectedMatchData: this.props.selectedMatch,
+         });
+      }
+   }
+
+   setSelectedMatchData(e) {}
+   setSelectedMatchDataRadioVersion(e) {}
 
    scheduleDate() {
       window.open(
          "mailto:someonesomewhere@gmail.com?subject=Schedule a date&body=" +
-            `I would like to schedule a date with ${currentMatch.username}.`,
+            `I would like to schedule a date with ${this.props.selectedMatch.username}.`,
          "_blank"
       );
    }
@@ -100,7 +113,7 @@ export default class MatchPage extends React.Component {
                   <div className="row">
                      <div className="col-12 col-sm-7 mb-2 mb-sm-6">
                         <img
-                           src={currentMatch.verifyPhotoUrl}
+                           src={this.props.selectedMatch.verifyPhotoUrl}
                            width="100%"
                            height="auto"
                            style={{ borderRadius: "0.75rem" }}
@@ -109,19 +122,21 @@ export default class MatchPage extends React.Component {
                      </div>
                      <div className="col-12 col-sm-5 d-inline">
                         <p className="p-large mb-2">
-                           ID: {currentMatch.username}
+                           ID: {this.props.selectedMatch.username}
                         </p>
-                        <p className="p-large mt-n2 mb-6">{currentMatch.age}</p>
+                        <p className="p-large mt-n2 mb-6">
+                           {this.props.selectedMatch.age}
+                        </p>
                      </div>
                   </div>
 
-                  {currentMatch.questions.map((question) => {
+                  {this.props.selectedMatch.questions.map((question) => {
                      if (question.type === 1) {
                         return (
                            <RadioQuestion
                               question={question}
                               key={question.id}
-                              setData={this.setCurrentMatchDataRadioVersion}
+                              setData={this.setSelectedMatchDataRadioVersion}
                            />
                         );
                      } else if (question.type === 2) {
@@ -129,7 +144,7 @@ export default class MatchPage extends React.Component {
                            <CheckboxQuestion
                               question={question}
                               key={question.id}
-                              setData={this.setCurrentMatchData}
+                              setData={this.setSelectedMatchData}
                            />
                         );
                      } else if (question.type === 3) {
@@ -137,7 +152,7 @@ export default class MatchPage extends React.Component {
                            <LikertQuestion
                               question={question}
                               key={question.id}
-                              setData={this.setCurrentMatchDataRadioVersion}
+                              setData={this.setSelectedMatchDataRadioVersion}
                            />
                         );
                      }
@@ -155,7 +170,7 @@ export default class MatchPage extends React.Component {
                   <div className="row mb-2">
                      <div className="col-12">
                         <p className="d-inline">
-                           {currentMatch.questions[0].title}
+                           {this.props.selectedMatch.questions[0].title}
                         </p>
                         <p className="text-muted d-inline ml-2">
                            Never married
@@ -397,3 +412,11 @@ export default class MatchPage extends React.Component {
       );
    }
 }
+
+function mapStateToProps(state) {
+   //global state
+   return {
+      selectedMatch: state.selectedMatch,
+   };
+}
+export default connect(mapStateToProps)(MatchPage);

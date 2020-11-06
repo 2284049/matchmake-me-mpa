@@ -23,10 +23,18 @@ class Questionnaire extends React.Component {
    }
 
    componentDidMount() {
-      console.log("This is the props.current user", this.props);
       this.setState({
          currentUserData: this.props.currentUser,
       });
+   }
+
+   // DO THIS IN CASE THE DATA DOESN'T LOAD RIGHT AWAY AND UPDATE THE STATE
+   componentDidUpdate(prevProps) {
+      if (this.props.currentUser !== prevProps.currentUser) {
+         this.setState({
+            currentUserData: this.props.currentUser,
+         });
+      }
    }
 
    setCurrentUserData(e) {
@@ -216,9 +224,9 @@ class Questionnaire extends React.Component {
 
 function mapStateToProps(state) {
    //global state
-   console.log("this is the state", state.currentUser);
+   console.log("this is the state of current user", state.currentUser);
    return {
-      currentUser: { pizza: "mushroom" },
+      currentUser: state.currentUser,
    };
 }
 export default connect(mapStateToProps)(Questionnaire);

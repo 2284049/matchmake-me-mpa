@@ -11,3 +11,14 @@ export default function currentUser(currentUser = {}, action) {
          return currentUser;
    }
 }
+
+// export default function currentUser(currentUser = {}, action) {
+//    switch (action.type) {
+//       case actions.UPDATE_CURRENT_USER:
+//          let newCurrentUser = { ...currentUser };
+//          newCurrentUser = action.payload;
+//          return newCurrentUser; // new state
+//       default:
+//          return currentUser;
+//    }
+// }

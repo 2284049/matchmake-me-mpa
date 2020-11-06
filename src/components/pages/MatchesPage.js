@@ -14,7 +14,7 @@ class Matches extends React.Component {
          .get(
             "https://raw.githubusercontent.com/2284049/matchmake-me-mpa/main/src/mock-data/matchesdata.json"
          )
-         .then(function (res) {
+         .then((res) => {
             // handle success
             console.log(res);
 
@@ -23,7 +23,7 @@ class Matches extends React.Component {
                payload: res.data,
             });
          })
-         .catch(function (error) {
+         .catch((error) => {
             // handle error
          });
    }
@@ -37,7 +37,7 @@ class Matches extends React.Component {
    }
 
    render() {
-      const matchesData = this.props.matches;
+      // const matchesData = this.props.matches;
 
       return (
          <div className="container">
@@ -74,7 +74,7 @@ class Matches extends React.Component {
                            Edit Your Profile
                         </Link>
                         <Link
-                           to="/landing"
+                           to="/"
                            className="btn btn-link float-right mt-n1"
                            onClick={() => {
                               this.logOutCurrentUser();
