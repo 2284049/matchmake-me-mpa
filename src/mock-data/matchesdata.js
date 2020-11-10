@@ -10,80 +10,6 @@ const matches = [
          "https://static.wixstatic.com/media/7fa9fc_1b0170005fea4ea5b66760afedee15c4~mv2.jpg/v1/fill/w_1000,h_665,al_c,q_85/7fa9fc_1b0170005fea4ea5b66760afedee15c4~mv2.jpg", // use the actual URL for the photos you found!
       questions: [
          {
-            id: "e7a226e4-3fdb-4230-8c6a-ef3889e6815b",
-            title: "You identify as:",
-            type: 1,
-            limit: 1,
-            answers: [
-               {
-                  id: "d99130ed-8ed7-4927-980a-d6e8e3f4745b",
-                  text: "Female",
-               },
-               {
-                  id: "d1fa8858-4fb5-4a28-aaf9-02197425f5e4",
-                  text: "Male",
-               },
-            ],
-            selectedAnswerIds: ["d1fa8858-4fb5-4a28-aaf9-02197425f5e4"], // an array of UUIDs indicating all selected answers. can be one or none, too.
-            // map over the questions, for each question I need to display the title and the selected answer.
-            // questions.map((question) => {
-            // return (
-            // <Question
-            // question={question.title}
-            // answer={question.answers.indexOf(question.selectedAnswerIds)}
-            // there might be multiple answers with multiple ids, do I map over the answers array too?
-            // key={memoryCard.id}
-            // />
-            // );
-            // })
-            // }
-            // to display the selected answer, I need to get the selectedAnswerIds
-            // and then find the index of the answer with that id,
-            // and then show the text of that answer
-         },
-         {
-            id: "2751a7dd-9c9a-4a26-88af-677df8bba6a5",
-            title: "Looking for:",
-            type: 1,
-            limit: 1,
-            answers: [
-               {
-                  id: "3892b36a-8a64-443b-bb34-0d933885fc4f",
-                  text: "Female",
-               },
-               {
-                  id: "4b5ffbab-70e2-4ff7-9040-64d4fbe31ceb",
-                  text: "Male",
-               },
-            ],
-            selectedAnswerIds: ["3892b36a-8a64-443b-bb34-0d933885fc4f"], // an array of UUIDs indicating all selected answers. can be one or none, too.
-         },
-         {
-            id: "c01267de-4473-4454-adad-bd978e971595",
-            title: "Relationship status:",
-            type: 2,
-            limit: 0,
-            answers: [
-               {
-                  id: "367b63d4-f3b1-48f4-aca4-7cd67b80030a",
-                  text: "Never married",
-               },
-               {
-                  id: "adbfe02b-38f8-4196-bd9e-35d03c3e751a",
-                  text: "Currently separated",
-               },
-               {
-                  id: "6b9cab6d-ef37-4e93-a489-54e52393b8f0",
-                  text: "Divorced",
-               },
-               {
-                  id: "bfaacfe4-a715-4541-ae9d-2aa57b28aede",
-                  text: "Widowed",
-               },
-            ],
-            selectedAnswerIds: ["367b63d4-f3b1-48f4-aca4-7cd67b80030a"], // an array of UUIDs indicating all selected answers. can be one or none, too.
-         },
-         {
             id: "a2dfe856-c8bc-44c8-be7b-a38e2c3329d9",
             title: "Would you like to have any/additional kids in the future?",
             type: 1,
@@ -274,65 +200,6 @@ const matches = [
       verifyPhotoUrl:
          "http://clipart-library.com/new_gallery/45-455875_black-person-png-business-professional-man-png.png", // use the actual URL for the photos you found!
       questions: [
-         {
-            id: "e7a226e4-3fdb-4230-8c6a-ef3889e6815b",
-            title: "You identify as:",
-            type: 1,
-            limit: 1,
-            answers: [
-               {
-                  id: "d99130ed-8ed7-4927-980a-d6e8e3f4745b",
-                  text: "Female",
-               },
-               {
-                  id: "d1fa8858-4fb5-4a28-aaf9-02197425f5e4",
-                  text: "Male",
-               },
-            ],
-            selectedAnswerIds: ["d1fa8858-4fb5-4a28-aaf9-02197425f5e4"], // an array of UUIDs indicating all selected answers. can be one or none, too.
-         },
-         {
-            id: "2751a7dd-9c9a-4a26-88af-677df8bba6a5",
-            title: "Looking for:",
-            type: 1,
-            limit: 1,
-            answers: [
-               {
-                  id: "3892b36a-8a64-443b-bb34-0d933885fc4f",
-                  text: "Female",
-               },
-               {
-                  id: "4b5ffbab-70e2-4ff7-9040-64d4fbe31ceb",
-                  text: "Male",
-               },
-            ],
-            selectedAnswerIds: ["3892b36a-8a64-443b-bb34-0d933885fc4f"], // an array of UUIDs indicating all selected answers. can be one or none, too.
-         },
-         {
-            id: "c01267de-4473-4454-adad-bd978e971595",
-            title: "Relationship status:",
-            type: 2,
-            limit: 0,
-            answers: [
-               {
-                  id: "367b63d4-f3b1-48f4-aca4-7cd67b80030a",
-                  text: "Never married",
-               },
-               {
-                  id: "adbfe02b-38f8-4196-bd9e-35d03c3e751a",
-                  text: "Currently separated",
-               },
-               {
-                  id: "6b9cab6d-ef37-4e93-a489-54e52393b8f0",
-                  text: "Divorced",
-               },
-               {
-                  id: "bfaacfe4-a715-4541-ae9d-2aa57b28aede",
-                  text: "Widowed",
-               },
-            ],
-            selectedAnswerIds: ["6b9cab6d-ef37-4e93-a489-54e52393b8f0"], // an array of UUIDs indicating all selected answers. can be one or none, too.
-         },
          {
             id: "a2dfe856-c8bc-44c8-be7b-a38e2c3329d9",
             title: "Would you like to have any/additional kids in the future?",
@@ -525,65 +392,6 @@ const matches = [
          "https://images.squarespace-cdn.com/content/v1/592702373a04114633ee6536/1528567192195-VCIU199PUKZ1WYYVUXLF/ke17ZwdGBToddI8pDm48kJ8m9hRK-_ZTTw3hGANm0fYUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8GRo6ASst2s6pLvNAu_PZdJOX8AtFkTRSQSF4gXjSOXyTHLl8NHV1q-G-Yn2mJ25w2PkeSciNTH41AkCYSdUaPY/Corporate-Headshots-Casual-Attire", // use the actual URL for the photos you found!
       questions: [
          {
-            id: "e7a226e4-3fdb-4230-8c6a-ef3889e6815b",
-            title: "You identify as:",
-            type: 1,
-            limit: 1,
-            answers: [
-               {
-                  id: "d99130ed-8ed7-4927-980a-d6e8e3f4745b",
-                  text: "Female",
-               },
-               {
-                  id: "d1fa8858-4fb5-4a28-aaf9-02197425f5e4",
-                  text: "Male",
-               },
-            ],
-            selectedAnswerIds: ["d1fa8858-4fb5-4a28-aaf9-02197425f5e4"], // an array of UUIDs indicating all selected answers. can be one or none, too.
-         },
-         {
-            id: "2751a7dd-9c9a-4a26-88af-677df8bba6a5",
-            title: "Looking for:",
-            type: 1,
-            limit: 1,
-            answers: [
-               {
-                  id: "3892b36a-8a64-443b-bb34-0d933885fc4f",
-                  text: "Female",
-               },
-               {
-                  id: "4b5ffbab-70e2-4ff7-9040-64d4fbe31ceb",
-                  text: "Male",
-               },
-            ],
-            selectedAnswerIds: ["3892b36a-8a64-443b-bb34-0d933885fc4f"], // an array of UUIDs indicating all selected answers. can be one or none, too.
-         },
-         {
-            id: "c01267de-4473-4454-adad-bd978e971595",
-            title: "Relationship status:",
-            type: 2,
-            limit: 0,
-            answers: [
-               {
-                  id: "367b63d4-f3b1-48f4-aca4-7cd67b80030a",
-                  text: "Never married",
-               },
-               {
-                  id: "adbfe02b-38f8-4196-bd9e-35d03c3e751a",
-                  text: "Currently separated",
-               },
-               {
-                  id: "6b9cab6d-ef37-4e93-a489-54e52393b8f0",
-                  text: "Divorced",
-               },
-               {
-                  id: "bfaacfe4-a715-4541-ae9d-2aa57b28aede",
-                  text: "Widowed",
-               },
-            ],
-            selectedAnswerIds: ["bfaacfe4-a715-4541-ae9d-2aa57b28aede"], // an array of UUIDs indicating all selected answers. can be one or none, too.
-         },
-         {
             id: "a2dfe856-c8bc-44c8-be7b-a38e2c3329d9",
             title: "Would you like to have any/additional kids in the future?",
             type: 1,
@@ -774,65 +582,6 @@ const matches = [
       verifyPhotoUrl:
          "https://zenstudiosla.com/wp-content/uploads/2020/08/Corporate-Headshot-man-1742-.jpg", // use the actual URL for the photos you found!
       questions: [
-         {
-            id: "e7a226e4-3fdb-4230-8c6a-ef3889e6815b",
-            title: "You identify as:",
-            type: 1,
-            limit: 1,
-            answers: [
-               {
-                  id: "d99130ed-8ed7-4927-980a-d6e8e3f4745b",
-                  text: "Female",
-               },
-               {
-                  id: "d1fa8858-4fb5-4a28-aaf9-02197425f5e4",
-                  text: "Male",
-               },
-            ],
-            selectedAnswerIds: ["d1fa8858-4fb5-4a28-aaf9-02197425f5e4"], // an array of UUIDs indicating all selected answers. can be one or none, too.
-         },
-         {
-            id: "2751a7dd-9c9a-4a26-88af-677df8bba6a5",
-            title: "Looking for:",
-            type: 1,
-            limit: 1,
-            answers: [
-               {
-                  id: "3892b36a-8a64-443b-bb34-0d933885fc4f",
-                  text: "Female",
-               },
-               {
-                  id: "4b5ffbab-70e2-4ff7-9040-64d4fbe31ceb",
-                  text: "Male",
-               },
-            ],
-            selectedAnswerIds: ["3892b36a-8a64-443b-bb34-0d933885fc4f"], // an array of UUIDs indicating all selected answers. can be one or none, too.
-         },
-         {
-            id: "c01267de-4473-4454-adad-bd978e971595",
-            title: "Relationship status:",
-            type: 2,
-            limit: 0,
-            answers: [
-               {
-                  id: "367b63d4-f3b1-48f4-aca4-7cd67b80030a",
-                  text: "Never married",
-               },
-               {
-                  id: "adbfe02b-38f8-4196-bd9e-35d03c3e751a",
-                  text: "Currently separated",
-               },
-               {
-                  id: "6b9cab6d-ef37-4e93-a489-54e52393b8f0",
-                  text: "Divorced",
-               },
-               {
-                  id: "bfaacfe4-a715-4541-ae9d-2aa57b28aede",
-                  text: "Widowed",
-               },
-            ],
-            selectedAnswerIds: ["367b63d4-f3b1-48f4-aca4-7cd67b80030a"], // an array of UUIDs indicating all selected answers. can be one or none, too.
-         },
          {
             id: "a2dfe856-c8bc-44c8-be7b-a38e2c3329d9",
             title: "Would you like to have any/additional kids in the future?",
